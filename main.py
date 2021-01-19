@@ -53,8 +53,10 @@ async def say(ctx, *, text):
 		gif_count = len(gifs_list)
 		for i in range(0, count):
 			random_gif = random.randint(0,gif_count)
-			await ctx.send(embed=discord.Embed(description=" ".join(cmd[2:-1], gifs_list[random_gif])))
-			print("Message number: " + str(i))
+			await ctx.send(embed=discord.Embed(description=gifs_list[random_gif]))
+			await ctx.send(embed=discord.Embed(description=" ".join(cmd[2:-1])))
+
+			print("Message number: " + str(i) + "\n" + gifs_list[random_gif])
 	elif cmd[0] == "-m":
 		# Message and repeat count
 		count = int(cmd[-1])
