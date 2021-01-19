@@ -48,10 +48,19 @@ async def say(ctx, *, text):
 	
 	cmd = str(text).split()
 
-	if cmd[0] == "-m":
+	if cmd[0] == "-m" and cmd[1] == "-g":
+		count = int(cmd[-1])
+		gif_count = len(gifs_list)
+		for i in range(0, count):
+			random_gif = random.randint(0,gif_count)
+			await ctx.send(embed=discord.Embed(description=" ".join(cmd[2:-1], gifs_list[random_gif])))
+			print("Message number: " + str(i))
+	elif cmd[0] == "-m":
 		# Message and repeat count
-		for i in range(0, int(cmd[-1])):
+		count = int(cmd[-1])
+		for i in range(0, count):
 			await ctx.send(embed=discord.Embed(description=" ".join(cmd[1:-1])))
+			print("Message number: " + str(i))
 	elif cmd[0] == "-g":
 		# Gif from site
 		count = int(cmd[1])
@@ -59,7 +68,7 @@ async def say(ctx, *, text):
 		for i in range(0, count):
 			random_gif = random.randint(0,gif_count)
 			await ctx.send(embed=discord.Embed().set_image(url=gifs_list[random_gif]))
-			print(gifs_list[random_gif])
+			print("Message number: " + str(i) + "\n" + gifs_list[random_gif])
 
 	## Gif from local
 	# await ctx.send(embed=discord.Embed().set_image(url=src))
@@ -67,3 +76,4 @@ async def say(ctx, *, text):
 
 
 client.run("", bot = False)
+
