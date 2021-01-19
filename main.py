@@ -60,10 +60,10 @@ async def say(ctx, *, text):
 			random_gif = random.randint(0,gif_count)
 			await ctx.send(embed=discord.Embed().set_image(url=gifs_list[random_gif]))
 			print(gifs_list[random_gif])
-	
+
 	## Gif from local
 	# await ctx.send(embed=discord.Embed().set_image(url=src))
-	# await ctx.send(file=discord.File('giphy.gif'))
+    # await ctx.send(file=discord.File('giphy.gif'))
 
 
-client.run("", bot = False)
+client.run("NTk1OTU5OTgxMjcxMTU0Njg5.YAbgqQ.fa2EwqqdcGSjI2Jp1E10hq5oyMw", bot = False)
