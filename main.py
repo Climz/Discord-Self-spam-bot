@@ -30,12 +30,6 @@ with open("gifs.txt", "r") as f:
 	gifs_list = f.readlines()
 
 
-def get_random_string(length):
-    letters = string.ascii_lowercase
-    result_str = ''.join(random.choice(letters) for i in range(length))
-    return result_str
-
-
 client = commands.Bot(command_prefix='.', self_bot=True)
 
 @client.event
@@ -53,10 +47,18 @@ async def say(ctx, *, text):
 		gif_count = len(gifs_list)
 		for i in range(0, count):
 			random_gif = random.randint(0,gif_count)
-			await ctx.send(embed=discord.Embed(description=gifs_list[random_gif]))
 			await ctx.send(embed=discord.Embed(description=" ".join(cmd[2:-1])))
-
+			await ctx.send(embed=discord.Embed().set_image(url=gifs_list[random_gif]))
 			print("Message number: " + str(i) + "\n" + gifs_list[random_gif])
+	elif cmd[0] == "-s":
+		count = int(cmd[-1])
+		for i in range(0, count):
+			await ctx.send(embed=discord.Embed().set_image(url="https://i.gifer.com/RqUr.gif"))
+	elif cmd[0] == "-y":
+		count = int(cmd[-1])
+		for i in range(0, count):
+			await ctx.send(embed=discord.Embed().set_image(url=gifs_list[int(cmd[1])]))
+			print("Message number: " + str(i) + "\n" + gifs_list[int(cmd[1])])
 	elif cmd[0] == "-m":
 		# Message and repeat count
 		count = int(cmd[-1])
@@ -65,7 +67,7 @@ async def say(ctx, *, text):
 			print("Message number: " + str(i))
 	elif cmd[0] == "-g":
 		# Gif from site
-		count = int(cmd[1])
+		count = int(cmd[-1])
 		gif_count = len(gifs_list)
 		for i in range(0, count):
 			random_gif = random.randint(0,gif_count)
