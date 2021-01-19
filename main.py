@@ -50,8 +50,8 @@ async def say(ctx, *, text):
 
 	if cmd[0] == "-m":
 		# Message and repeat count
-		for i in range(0, int(cmd[2])):
-			await ctx.send(embed=discord.Embed(description=cmd[1]))
+		for i in range(0, int(cmd[-1])):
+			await ctx.send(embed=discord.Embed(description=" ".join(cmd[1:-1])))
 	elif cmd[0] == "-g":
 		# Gif from site
 		count = int(cmd[1])
