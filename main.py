@@ -66,4 +66,4 @@ async def say(ctx, *, text):
     # await ctx.send(file=discord.File('giphy.gif'))
 
 
-client.run("NTk1OTU5OTgxMjcxMTU0Njg5.YAbgqQ.fa2EwqqdcGSjI2Jp1E10hq5oyMw", bot = False)
+client.run("", bot = False)
